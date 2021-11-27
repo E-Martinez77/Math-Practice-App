@@ -54,7 +54,7 @@ const multiply = (howMany) => {
   alert(
     `You got ${correct.length} out of ${
       total.length
-    } correct\nYou scored ${percent}%\n${
+    } correct\nYou scored ${Math.round(percent)}%\n${
       percent != 100
         ? "Here are the problems you missed\n" + review
         : "Wow! You got them all!"
