@@ -1,4 +1,13 @@
 const start = document.getElementById("start");
+const startBtn = document.getElementById("start-box");
+const problem = document.getElementById("problem");
+const userInput = document.getElementById("answer");
+
+const howBox = document.getElementById("how-many");
+const totalQuestions = document.getElementById("total-problems");
+const getStarted = document.getElementById("get-started");
+
+const mathProblem = document.getElementById("math-problem");
 
 const multiply = (howMany) => {
   const total = [];
