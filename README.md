@@ -10,7 +10,7 @@ Once all logic is completed it will be fully built out as a full stack project a
 
 ```
 AS AN adult with suboptimal arithmetic skills
-I WANT to randomly generate math problems that meets certain criteria
+I WANT to randomly generate math problems that meet certain criteria
 SO THAT I can log hours performing basic calculations to build mental math skills
 ```
 
