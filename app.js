@@ -15,6 +15,19 @@ const type = document.getElementById("type");
 const finalOutput = document.getElementById("final-output");
 
 const form = document.getElementById("form");
+const submitBtn = document.getElementById("submitBtn");
+
+const helper1 = (userQuestion) => {
+  mathProblem.textContent = "";
+  mathProblem.textContent = userQuestion;
+  //clear problem container
+  //Display math problem
+  //?Event listener? Can that be done within the scope of a function?
+};
+
+submitBtn.addEventListener("click", () => {
+  userAnswer.value;
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -30,7 +43,6 @@ form.addEventListener("submit", (e) => {
     type: type.value,
   };
 
-  console.log(userGame);
   newGame(userGame);
 });
 
@@ -58,6 +70,7 @@ const newGame = ({ total, type }) => {
 };
 
 const multiplication = (total, hard) => {
+  form.classList.add("visually-hidden");
   const totalArr = [];
   const correct = [];
   const incorrect = [];
@@ -83,38 +96,42 @@ const multiplication = (total, hard) => {
     };
 
     totalArr.push(newObj);
-  }
-  total.forEach((index) => {
-    if (index.correct == true) {
-      correct.push(index);
-    } else {
-      incorrect.push(index);
+
+    if (i == 50) {
+      total.forEach((index) => {
+        if (index.correct == true) {
+          correct.push(index);
+        } else {
+          incorrect.push(index);
+        }
+      });
+
+      //Calculate percentage correct
+
+      console.log(
+        `You got ${correct.length} out of ${total.length} correct\nYou scored ${
+          (correct.length / total.length) * 100
+        }%`
+      );
+
+      incorrect.forEach((thing) => {
+        review.push(thing.exercise);
+      });
+
+      if (correct.length != total.length) {
+        console.log(review);
+      }
+
+      let percent = (correct.length / total.length) * 100;
+      finalOutput.textContent = `You got ${correct.length} out of ${
+        total.length
+      } correct\nYou scored ${Math.round(percent)}%\n${
+        percent != 100
+          ? "Here are the problems you missed\n" + review
+          : "Wow! You got them all!"
+      }`;
     }
-  });
-  //Calculate percentage correct
-
-  console.log(
-    `You got ${correct.length} out of ${total.length} correct\nYou scored ${
-      (correct.length / total.length) * 100
-    }%`
-  );
-
-  incorrect.forEach((thing) => {
-    review.push(thing.exercise);
-  });
-
-  if (correct.length != total.length) {
-    console.log(review);
   }
-
-  let percent = (correct.length / total.length) * 100;
-  finalOutput.textContent = `You got ${correct.length} out of ${
-    total.length
-  } correct\nYou scored ${Math.round(percent)}%\n${
-    percent != 100
-      ? "Here are the problems you missed\n" + review
-      : "Wow! You got them all!"
-  }`;
 };
 
 const multiply = (howMany) => {
