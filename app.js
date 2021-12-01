@@ -156,6 +156,38 @@ const multiplication = (howMany, difficulty) => {
 
 console.log(multiplication(50));
 
+const multiplication = (howMany, difficult) => {
+  const allProb = [];
+
+  for (let i = 0; i < howMany; i++) {
+    let num1 = Math.floor(Math.random() * 12) + 1;
+    let num2 = Math.floor(Math.random() * 12) + 1;
+    let num3 = Math.floor(Math.random() * 12) + 1;
+
+    if (difficult == true) {
+      let question = `${num1} x ${num2} x ${num3} = ?`;
+      let answer = num1 * num2 * num3;
+      let newProb = {
+        question: question,
+        answer: answer,
+      };
+      allProb.push(newProb);
+    } else {
+      let question = `${num1} x ${num2} = ?`;
+      let answer = num1 * num2;
+      let newProb = {
+        question: question,
+        answer: answer,
+      };
+      allProb.push(newProb);
+    }
+  }
+  return allProb;
+};
+
+console.log(multiplication(50));
+console.log(multiplication(50, true));
+
 const multiply = (howMany) => {
   const total = [];
   const correct = [];
