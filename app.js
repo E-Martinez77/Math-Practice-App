@@ -1,5 +1,27 @@
 const start = document.getElementById("start");
 
+//Start with logic for Multiplication function
+const multiplication = (howMany, difficulty) => {
+  const allProb = [];
+
+  for (let i = 0; i < howMany; i++) {
+    let num1 = Math.floor(Math.random() * 12) + 1;
+    let num2 = Math.floor(Math.random() * 12) + 1;
+    let num3 = Math.floor(Math.random() * 12) + 1;
+
+    let question = `${num1} x ${num2} = ?`;
+    let answer = num1 * num2;
+    let newProb = {
+      question: question,
+      answer: answer,
+    };
+    allProb.push(newProb);
+  }
+  return allProb;
+};
+
+console.log(multiplication(50));
+
 const multiply = (howMany) => {
   const total = [];
   const correct = [];
