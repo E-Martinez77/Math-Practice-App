@@ -1,3 +1,4 @@
+//#region Global Targeting Variables
 const start = document.getElementById("start");
 const startBtn = document.getElementById("start-box");
 const problem = document.getElementById("problem");
@@ -16,6 +17,11 @@ const finalOutput = document.getElementById("final-output");
 
 const form = document.getElementById("form");
 const submitBtn = document.getElementById("submitBtn");
+//#endregion
+
+//#region Game Variables
+let userScore = 0;
+let i = 0;
 
 const helper1 = (userQuestion) => {
   mathProblem.textContent = "";
@@ -99,6 +105,9 @@ const multiplication = (howMany, difficult) => {
   return allProb;
 };
 
+let globalArr = multiplication(50);
+console.log(globalArr);
+
 const division = (howMany) => {
   const allProb = [];
 
@@ -169,14 +178,23 @@ submitBtn.addEventListener("click", () => {
   console.log(answer);
 });
 
-const newQuiz = (arr) => {
-  arr.forEach((index) => {
-    form.classList.add("visually-hidden");
+// const newQuiz = (arr) => {
+//   arr.forEach((index) => {
+//     form.classList.add("visually-hidden");
 
-    mathProblem.textContent = "";
-    mathProblem.textContent = index.question;
-    console.log(index);
-  });
+//     mathProblem.textContent = "";
+//     mathProblem.textContent = index.question;
+//     console.log(index);
+//   });
+// };
+
+const displayQuestion = (arr) => {
+  form.classList.add("visually-hidden");
+
+  mathProblem.textContent = "";
+  mathProblem.textContent = arr[i].question;
+
+  //How do I get the eventlistener information passed into this function???
+
+  //The scope of the event listener variable is limited
 };
-
-newQuiz(multiplication(10));
