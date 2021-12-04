@@ -20,7 +20,6 @@ const submitBtn = document.getElementById("submitBtn");
 //#endregion
 
 //#region Game Variables
-let userScore = 0;
 let i = 0;
 
 const helper1 = (userQuestion) => {
@@ -91,6 +90,8 @@ const multiplication = (howMany, difficult) => {
         answer: answer,
       };
       allProb.push(newProb);
+    } else if (num1 || num2 == 1 || 10 || 11) {
+      i--;
     } else {
       let question = `${num1} x ${num2} = ?`;
       let answer = num1 * num2;
@@ -104,9 +105,6 @@ const multiplication = (howMany, difficult) => {
 
   return allProb;
 };
-
-let globalArr = multiplication(50);
-console.log(globalArr);
 
 const division = (howMany) => {
   const allProb = [];
@@ -177,24 +175,3 @@ submitBtn.addEventListener("click", () => {
 
   console.log(answer);
 });
-
-// const newQuiz = (arr) => {
-//   arr.forEach((index) => {
-//     form.classList.add("visually-hidden");
-
-//     mathProblem.textContent = "";
-//     mathProblem.textContent = index.question;
-//     console.log(index);
-//   });
-// };
-
-const displayQuestion = (arr) => {
-  form.classList.add("visually-hidden");
-
-  mathProblem.textContent = "";
-  mathProblem.textContent = arr[i].question;
-
-  //How do I get the eventlistener information passed into this function???
-
-  //The scope of the event listener variable is limited
-};
