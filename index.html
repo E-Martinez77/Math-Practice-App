@@ -30,7 +30,7 @@
                     <label for="new-test">Test Your Math Skills</label>
 
                     <input id="total" name="total" class="form-control" type="number"
-                        placeholder="How Many Math Problems?" required>
+                        placeholder="How Many Math Problems?" required autofocus>
 
                     <select id="type" name="type" class="form-select" placeholder="Enter Your Answer">
                         <option value="addition" disabled>Addition</option>
@@ -51,13 +51,23 @@
 
             <div class="d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <ul class="list-group list-group-flush">
-                        <li id="math-problem" class="list-group-item text-center">An item</li>
-                        <input id="answer" type="number" placeholder="Enter Your Answer">
-                        <button id="submitBtn" class="btn btn-outline-dark">Submit</button>
-                    </ul>
+                    <form id="answer-form" novalidate class="list-group list-group-flush">
+                        <label id="math-problem" class="list-group-item text-center form-label">An item</label>
+                        <input id="answer" class="form-group" type="number" placeholder="Enter Your Answer" autofocus>
+                        <button type="submit" id="submitBtn" class="btn btn-outline-dark">Submit</button>
+                    </form>
                 </div>
 
+            </div>
+
+        </section>
+
+        <section id="final-score" class="container mt-4 visually-hidden">
+
+            <div class="d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <li id="score" class="list-group-item text-center"></li>
+                </div>
             </div>
 
         </section>
