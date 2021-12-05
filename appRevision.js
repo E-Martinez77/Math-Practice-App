@@ -39,19 +39,28 @@ const totalArr = [];
 const correct = [];
 const incorrect = [];
 const review = [];
-let index = 0;
-let gameActive = false;
+let index;
+let gameActive;
 
 const displayProblem = () => {
-  if (gameActive == true && index == totalArr.length) {
+  if (gameActive == true && index >= totalArr.length) {
     endGame();
+  } else {
+    console.log(`Current Index: ${index} Game Active: ${gameActive}`);
+    mathProblem.textContent = "";
+    mathProblem.textContent = `${
+      index >= totalArr.length ? " " : totalArr[index].q
+    }`;
+    userAnswer.value = "";
+    if (index >= totalArr.length) {
+      gameActive = false;
+      endGame();
+    }
   }
-  mathProblem.textContent = "";
-  mathProblem.textContent = totalArr[index].q;
-  userAnswer.value = "";
 };
 
 const endGame = () => {
+  console.log(`endGame() flag`);
   gameActive = false;
   problem.classList.add("visually-hidden");
   finalDisplay.classList.remove("visually-hidden");
@@ -128,6 +137,8 @@ form.addEventListener("submit", (e) => {
   form.classList.add("visually-hidden");
   problem.classList.remove("visually-hidden");
 
+  index = 0;
+  gameActive == true;
   newGame(choice, howMany);
 });
 
