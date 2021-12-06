@@ -34,6 +34,7 @@ const answerForm = document.getElementById("answer-form");
 
 const finalDisplay = document.getElementById("final-score");
 const finalScore = document.getElementById("score");
+const startOver = document.getElementById("start-over");
 
 const totalArr = [];
 const correct = [];
@@ -145,15 +146,18 @@ form.addEventListener("submit", (e) => {
 answerForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (userAnswer.textContent == "") {
+  if (userAnswer.value == "") {
     e.preventDefault();
   }
 
-  if (userAnswer.textContent == totalArr[index].a) {
+  console.log(`Answer Check: ${userAnswer.value == totalArr[index].a}`);
+  if (userAnswer.value == totalArr[index].a) {
+    console.log(`Push to correct`);
     correct.push(totalArr[index]);
     index++;
     displayProblem();
   } else {
+    console.log(`Push to review`);
     review.push(totalArr[index].q);
     index++;
     displayProblem();
@@ -163,3 +167,10 @@ answerForm.addEventListener("submit", (e) => {
 if (index == totalArr.length) {
   endGame();
 }
+
+startOver.addEventListener("click", (e) => {
+  totalArr.splice(0, totalArr.length);
+  //Clear all arrays
+  //Adjust display settings for all elements to reset to the default state
+  //Rather than refactoring everything it might be best to just write a helper function for a full reset.
+});
