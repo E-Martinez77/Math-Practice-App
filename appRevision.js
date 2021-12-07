@@ -135,12 +135,17 @@ form.addEventListener("submit", (e) => {
   let howMany = total.value;
   let choice = type.value;
 
-  form.classList.add("visually-hidden");
+  howBox.classList.add("visually-hidden");
   problem.classList.remove("visually-hidden");
 
   index = 0;
   gameActive == true;
   newGame(choice, howMany);
+  howMany = "";
+  choice = "";
+  form.classList.remove("was-validated");
+  total.setAttribute("disabled", "");
+  type.setAttribute("disabled", "");
 });
 
 answerForm.addEventListener("submit", (e) => {
@@ -170,7 +175,18 @@ if (index == totalArr.length) {
 
 startOver.addEventListener("click", (e) => {
   totalArr.splice(0, totalArr.length);
+  correct.splice(0, correct.length);
+  review.splice(0, correct.length);
+  index = undefined;
+  // form.classList.remove("visually-hidden");
+  howBox.classList.remove("visually-hidden");
+  finalScore.classList.add("visually-hidden");
+  finalScore.textContent = "";
+  total.removeAttribute("disabled");
+  type.removeAttribute("disabled");
+
   //Clear all arrays
+  //reset index to undefined? How do you un-initialize a variable?
   //Adjust display settings for all elements to reset to the default state
   //Rather than refactoring everything it might be best to just write a helper function for a full reset.
 });
